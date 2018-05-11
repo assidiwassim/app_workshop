@@ -1,8 +1,6 @@
 import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor'
 
-
-
 Template.SLayout.helpers({
     'isOnline': function() {
         if (Meteor.userId()) {
@@ -20,14 +18,12 @@ Template.SLayout.helpers({
     }
 });
 
-
-
 Template.SLayout.events({
-    'click #logout' (event) {
-
-        event.preventDefault();
+    'click #logout' () {
+		FlowRouter.go('/');
         Meteor.logout();
-        FlowRouter.go('/');
+		location.reload();
+	
     }
 
 });
