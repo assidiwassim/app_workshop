@@ -1,0 +1,96 @@
+<template name="LiveChat">
+    <div id="live-chat">
+            
+            <header class="clearfix">
+                <h4>Chat room</h4>
+            </header>
+    
+            <div class="chat">
+                
+                <div class="chat-history">
+                    
+                    {{#each ChatList}}
+                    <div class="chat-message clearfix">
+                        <div class="chat-message-content clearfix">
+                            
+                            <h5 class="ex">{{userSender}}</h5>
+    
+                            <p class="ex">{{message}}</p>
+                            
+                        </div> <!-- end chat-message-content -->
+    
+                    </div> <!-- end chat-message -->
+                
+                        {{/each}}
+                        <br><br><br>
+                </div> <!-- end chat-history -->
+                
+                
+    
+                <form >
+                        <hr id="view">
+                    <fieldset>
+                        
+                        <input type="text" name="message" placeholder="Type your message…"  autocomplete="off" >
+                        
+                        <button type="submit" class="sendButton"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+    
+                    </fieldset>
+    
+                </form>
+    
+            </div> <!-- end chat -->
+    
+        </div> <!-- end live-chat -->
+
+    
+</template>
+
+
+<template name="LivechatMobile">
+        <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <a class="navbar-brand" id="back" >
+                            <i class="fa fa-arrow-left" aria-hidden="true"> </i>&nbsp;&nbsp; chatRoom
+                    </a>
+                  </div>
+                </div>
+             </nav>
+             <div id="live-chat-mobile">
+                
+                    <div class="chat-history">
+                        
+                        {{#each ChatList}}
+                        <div class="chat-message clearfix">
+                            <div class="chat-message-content clearfix">
+                                
+                                <h5 class="ex">{{userSender}}</h5>
+        
+                                <p class="ex">{{message}}</p>
+                                
+                            </div> <!-- end chat-message-content -->
+        
+                        </div> <!-- end chat-message -->
+                    
+                            {{/each}}
+                            <br><br><br>
+                    </div> <!-- end chat-history -->
+                    
+                    
+        
+                    <form >
+                            <hr id="view">
+                        <fieldset>
+                            
+                            <input type="text" name="message" placeholder="Type your message…"  autocomplete="off"  id="input-chat"/>
+                            
+                            <button type="submit"  class="sendButton"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+        
+                        </fieldset>
+        
+                    </form>
+        
+            </div>
+    
+</template>

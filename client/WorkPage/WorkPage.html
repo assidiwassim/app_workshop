@@ -1,0 +1,71 @@
+<template name="WorkPage">
+ 
+        <br>     <br>  <br>  <br>  <br>  <br>  <br>  <br> 
+  <div class="container">
+      <div class="row">
+          <div class="col-md-3">
+                <div class="mini-submenu">
+                        <ol class="breadcrumb"> 
+                                <li><a href="#">Explorator</a> </li>
+                                <i class="fa fa-angle-double-down pull-right angle-double-style "  aria-hidden="true"></i>
+                              </ol>
+                    </div>
+                    <div id="list-group" class="list-group">
+                        <span href="#" class="list-group-item active">
+                            ProjectName
+                            <span class="pull-right" id="slide-submenu">
+                                <i class="fa fa-times"></i>
+                            </span>
+                        </span>
+                        <div class="scroll_liste ">
+                                {{#each file in FilesList.each}}
+                        <a data-value="{{file._id}}" class="list-group-item" >
+                             {{subname file.name }}  <i class="fa fa-download pull-right"></i>                     
+                          </a>
+                        {{/each}}
+                        </div>
+                    </div>        
+                
+          </div>
+          <div class=" col-md-9">
+              <div class="row">
+                <div class="col-xs-8 col-md-10 ">
+                        <ol class="breadcrumb breadcrumb_style"> 
+                                <li><a href="#">ProjectsName</a></li>
+                                <li><a href="#">FileName</a></li>
+                              </ol>
+                </div>
+                <div class="col-xs-4   col-md-2">
+                        <button id="UploadButton" class="btn btn-block btn-default" > <i class="fa fa-upload"> </i> Upload </button>
+                    </div>
+                
+              </div>
+  
+   
+
+
+      <div id="summernote">
+         
+      </div>
+
+      
+     
+    
+   
+    
+     <button id="SaveButton">Save</button>
+      
+    </div>
+</div>
+</div>
+<div class="hidden-xs">
+            <br>   
+             {{>LiveChat}}
+             <br> <br>
+</div>
+<div class="visible-xs ui-widget-content" id="fab">
+    <a id="fab">
+        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+      </a>
+</div>
+ </template>

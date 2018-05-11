@@ -1,0 +1,81 @@
+#SaveButton {
+    position: absolute;
+    padding: 3px 35px;
+    right: 14px;
+    margin-top: -10px;
+}
+
+@media screen and (max-width: 640px) {
+    #SaveButton {
+        left: 14px;
+    }
+}
+
+#UploadButton {
+    position: relative;
+    top: 2px;
+}
+
+.breadcrumb {
+    position: relative;
+    top: 2px;
+    margin-right: 0;
+    background-color: #FFFFFF !important;
+    border: solid 1px lightgrey;
+    padding: 6px 10px;
+}
+
+.angle-double-style {
+    font-size: 25px;
+}
+
+.mini-submenu:hover {
+    cursor: pointer;
+}
+
+.mini-submenu .icon-bar {
+    border-radius: 1px;
+    display: block;
+    height: 2px;
+    width: 22px;
+    margin-top: 3px;
+}
+
+.mini-submenu .icon-bar {
+    background-color: #000;
+}
+
+#slide-submenu {
+    cursor: pointer;
+}
+
+.scroll_liste {
+    height: 364px;
+    background-color: #FFFFFF;
+    border-bottom: solid 1px lightgrey;
+    border-radius: 5px;
+    overflow: auto;
+}
+
+#fab {
+    height: 50px;
+    width: 50px;
+    background-color: #218ee6;
+    border-radius: 50%;
+    position: fixed;
+    right: 40px;
+    bottom: 35px;
+    color: white;
+    box-shadow: 0 10px 14px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+#fab :hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+#fab .fa-envelope-o {
+    font-size: 22px;
+    position: relative;
+    top: 13px;
+    left: 13px;
+}

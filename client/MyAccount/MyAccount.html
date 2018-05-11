@@ -1,0 +1,56 @@
+<template name="MyAccount">
+        <div  id="MyAccount">
+
+       
+        <br> <br> <br> <br> <br> <br> <br> <br>
+    <div class="container ">
+
+   
+<div class="row">
+<div class="col-md-offset-2 col-md-2  text-center">
+        <img src="/a.png" class="img-thumbnail hidden-xs"/>
+<h3 class="text-center hidden-xs ">{{Getusername}}</h3>
+
+<h5 class="text-center hidden-xs">{{GetEmail}} </h5>
+<hr class="hidden-xs">
+<a href="/StepOne" class="btn btn-default btn-block">Create new project</a> 
+<br> 
+</div>
+<div class="col-md-6">
+
+
+             <!-- Nav tabs --><div class="card">
+                        <ul class="nav nav-tabs" role="tablist">
+                                        <li role="presentation" class="active"><a href="#home1" aria-controls="home1" role="tab" data-toggle="tab">Your projects</a></li>
+                                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Athers projects</a></li>
+                                    </ul>
+
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div role="tabpanel"  class="tab-pane active" id="home1">
+                                                        <ul class="list-group">
+                                                                        {{#each ListProjectUser}}
+                                                                        <li class="list-group-item linkProject" >    <h3> {{Name}}</h3> <br>  <p>{{Description}}  </p>    </li>
+                                                              {{/each}}
+                                                         </ul>
+                                      </div>
+                                        <div role="tabpanel" class="tab-pane" id="profile">
+                                                        <ul class="list-group">
+                                                                        {{#each ListProjectcollaborator}}
+                                                                                  <li class="list-group-item linkProject" >     <h3> {{Name}} </h3><br>   <p>{{Description}}</p>    </li>
+                                                                        {{/each}}
+                                                         </ul>
+                                      </div>
+                                        </div>
+
+
+
+                             
+ 
+</div>
+</div>
+</div>
+</div>
+ </div>
+ <br> <br> <br> <br> <br> <br>
+</template>

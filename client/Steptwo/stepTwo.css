@@ -1,0 +1,41 @@
+#StepTwo .btn-default_style {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    background-color: transparent;
+    color: #53739A;
+    border: solid 2px #53739A;
+    padding: 5px 40px;
+    font-size: 18px;
+    border-radius: 0;
+}
+
+#StepTwo .btn-create {
+    position: relative;
+    top: 26px;
+    padding: 4px 12px;
+    right: 20px;
+}
+
+#StepTwo .icon-user-plus {
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+#StepTwo .fa-times {
+    cursor: pointer;
+}
+
+@media screen and (min-width: 100px) and (max-width: 640px) {
+    #StepTwo .btn-default_style {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        background-color: transparent;
+        color: #53739A;
+        border: solid 2px #53739A;
+        padding: 5px 40px;
+        font-size: 18px;
+        border-radius: 0;
+    }
+}

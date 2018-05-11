@@ -1,0 +1,109 @@
+<template name="StepTwo">
+        <div id="StepTwo">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h1 class="text-center">Files informations</h1>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="container">
+                        <div class="row">
+                                <div class="col-md-offset-3 col-md-6 ">
+                                        <div class="row">
+                                                <div class="col-md-6">
+                                                        <div class="row">
+                                                                <div class="col-md-9 col-sm-9 col-xs-9">
+                                                                        <div class="form-group">
+                                                                                <label for="usr">Name of new file</label>
+                                                                                <input type="text" class="form-control" placeholder="Exemple : index.html " id="filename">
+                                                                        </div>
+                                                                </div>
+                                                                <div class="col-md-3  col-sm-3 col-xs-3">
+                                                                        <div class="form-group">
+                                                                                <button class="btn-create" id="newfile">Create</button>
+                                                                        </div>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                        <div class="form-group">
+                                                                <label for="usr">Upload new file </label>
+                                                                <input type="file" class="form-control" id="fileInput">
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="row">
+                                                <div class="col-md-12">
+                                                        <ul class="list-group">
+
+
+                                                                {{#each FindList}}
+
+                                                                <li class="list-group-item">{{name}}
+                                                                        <i class="fa fa-user-plus icon-user-plus pull-right" data-toggle="modal" data-target="#{{key}}"></i>
+                                                                        <i class="fa fa-times  pull-right"> </i>
+                                                                        <div class="modal fade" id="{{key}}" role="dialog">
+                                                                                <div class="modal-dialog">
+
+                                                                                        <!-- Modal content-->
+                                                                                        <div class="modal-content">
+                                                                                                <div class="modal-header">
+                                                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                                                        <h4 class="modal-title">user List</h4>
+                                                                                                </div>
+                                                                                                <div class="modal-body">
+
+
+
+
+                                                                                                        <form>
+                                                                                                                {{#each AllUsers}}
+                                                                                                                <div class="checkbox" id="checkboxes">
+
+                                                                                                                        <label>
+                                                                                                                                <input type="checkbox" class="checkbox2" value="{{_id}}" name="{{_id}}"> {{username}}
+
+                                                                                                                        </label>
+                                                                                                                </div>
+                                                                                                                {{/each}}
+                                                                                                        </form>
+
+
+
+                                                                                                </div>
+                                                                                                <div class="modal-footer">
+                                                                                                        <button type="button" id="okbutton" class="btn btn-default" data-dismiss="modal">OK</button>
+                                                                                                </div>
+                                                                                        </div>
+
+                                                                                </div>
+                                                                        </div>
+
+
+                                                                </li>
+                                                                {{/each}}
+                                                        </ul>
+                                                </div>
+                                        </div>
+
+                                </div>
+                        </div>
+                </div>
+
+                <a class="btn btn-default_style" id="Nextstep">Next step</a>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+        </div>
+</template>

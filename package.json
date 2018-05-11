@@ -1,0 +1,12 @@
+{
+  "name": "app_workshop",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.42",
+    "jszip": "^3.1.5",
+    "meteor-node-stubs": "^0.3.2"
+  }
+}
