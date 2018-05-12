@@ -1,26 +1,23 @@
 import { Template } from 'meteor/templating';
+import { Meteor } from 'meteor/meteor'
+import Files from '/lib/Files';
+import Images from '/lib/Images';
+import Pdf from '/lib/Pdf';
 
-import Files from '/lib/collection';
 
-
-Template.StepTwo.onCreated(function () {
-    this.fileList =  new ReactiveList();
+Template.StepTwo.onRendered(function() {
+    Meteor.subscribe('users');
+    Meteor.subscribe('Projects');
+    Meteor.subscribe('Chat');
+        this.fileList =  new ReactiveList();
     this.counter =  new ReactiveVar(0);
-  });
-
-
+});
 
 Template.StepTwo.events({
 
     'click #Nextstep' (event,template) {
-        // Prevent default browser form submit
         event.preventDefault();
-
-        // Get value from form element
-
-
         var IdProject = FlowRouter.getParam("postId");
-
         template.fileList.forEach((value, key) =>{
                 const users=value.userslist;
             if(value.file.length>0){
@@ -33,8 +30,6 @@ Template.StepTwo.events({
                         users:users,
                         id:IdProject
                     }
-                  
-                   
                   }, false);
                 
                   uploadInstance.on('start', function() {
@@ -46,12 +41,9 @@ Template.StepTwo.events({
                       window.alert('Error during upload: ' + error.reason);
                     } else {
                       window.alert('File "' + fileObj.ext + '" successfully uploaded');
-                    
-                     
                     }
                    
                   });
-          
                   uploadInstance.start();
             }
             else{
@@ -67,13 +59,7 @@ Template.StepTwo.events({
                 });
             }
           }, true); 
-
-
-
-
-
         FlowRouter.go('/WorkPage/' + IdProject);
-
     },
 
     'click #newfile'(e,template){
@@ -81,8 +67,6 @@ Template.StepTwo.events({
        const counter=template.counter.get()
        template.counter.set(counter+1)
        template.fileList.insert(counter,{name:filename,file:[],key:counter})
-       
-        
     },
 
     'change #fileInput': function (e, template) {
@@ -114,7 +98,7 @@ Template.StepTwo.events({
                     template.fileList.update(this.key, { name:name,file:file,userslist: selectedUsers})
                 }
               }, true); 
-        // template.fileList.update(this.key, { userslist: selectedUsers});
+    
 
 
 

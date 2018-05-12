@@ -1,11 +1,11 @@
 import { Meteor } from 'meteor/meteor';
+import Files from '/lib/Files';
+import Images from '/lib/Images';
+import Pdf from '/lib/Pdf';
 
 Meteor.startup(() => {
 
-    Meteor.publish('Chat', function(IdProject) {
-        return Chat.find({ 'IdProject': IdProject });
-    })
-
+  
     Meteor.methods({
 
 

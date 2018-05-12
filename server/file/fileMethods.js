@@ -1,7 +1,10 @@
 var fs = require("fs");
 var JSZip = require("jszip");
-import Files from '/lib/collection';
 import { throws } from "assert";
+import Files from '/lib/Files';
+import Images from '/lib/Images';
+import Pdf from '/lib/Pdf';
+
 Meteor.methods({
     'todos.updateText'(path) {
      

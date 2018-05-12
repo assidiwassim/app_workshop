@@ -1,4 +1,14 @@
 import { Template } from 'meteor/templating';
+import { Meteor } from 'meteor/meteor'
+import Files from '/lib/Files';
+import Images from '/lib/Images';
+import Pdf from '/lib/Pdf';
+
+Template.Home.onRendered(function() {
+    Meteor.subscribe('users');
+    Meteor.subscribe('Projects');
+    Meteor.subscribe('Chat');
+});
 
 Template.Home.events({
     'submit form' (event) {
@@ -16,22 +26,10 @@ Template.Home.events({
             if (err) {
                 Bert.alert(err.reason, 'danger', 'growl-bottom-right');
             } else {
-
-
-                Bert.alert({
-                    icon: 'fa-user-o',
-                    title: 'hello ' + Meteor.user().username,
-                    message: 'Welcome in workShop.com'
-                });
                 FlowRouter.go('/MyAccount');
             }
 
         });
-
-
-        target.Email.value = '';
-        target.Password.value = '';
-
     },
 	'click .signup-fn' (event) {
         FlowRouter.go("/SignUp");

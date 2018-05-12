@@ -1,12 +1,14 @@
 import { Template } from 'meteor/templating';
+import { Meteor } from 'meteor/meteor'
+import Files from '/lib/Files';
+import Images from '/lib/Images';
+import Pdf from '/lib/Pdf';
 
-Template.MyAccount.onRendered(function infoOnCreated() {
-
-    Meteor.subscribe('ListProjectUser');
-    Meteor.subscribe('ListProjectcollaborator');
+Template.MyAccount.onRendered(function() {
+    Meteor.subscribe('users');
+    Meteor.subscribe('Projects');
+    Meteor.subscribe('Chat');
 });
-
-
 
 
 Template.MyAccount.events({

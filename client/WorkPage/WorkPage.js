@@ -1,14 +1,15 @@
 import { Template } from 'meteor/templating';
+import { Meteor } from 'meteor/meteor'
+import Files from '/lib/Files';
+import Images from '/lib/Images';
+import Pdf from '/lib/Pdf';
 
-
-import Files from '/lib/collection';
-
-Template.WorkPage.onCreated(function () {
-   
-    this.file =  new ReactiveVar();
-
-  });
-
+Template.WorkPage.onRendered(function() {
+    Meteor.subscribe('users');
+    Meteor.subscribe('Projects');
+    Meteor.subscribe('Chat');
+     this.file =  new ReactiveVar();
+});
 
 
 Template.WorkPage.events({

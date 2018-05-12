@@ -1,4 +1,11 @@
 import { Template } from 'meteor/templating';
+import { Meteor } from 'meteor/meteor'
+
+Template.SignUp.onRendered(function() {
+    Meteor.subscribe('users');
+    Meteor.subscribe('Projects');
+    Meteor.subscribe('Chat');
+});
 
 Template.SignUp.events({
     'submit form' (event) {

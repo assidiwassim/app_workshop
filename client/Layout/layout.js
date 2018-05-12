@@ -1,11 +1,15 @@
 import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor'
-
-
-
+import Files from '/lib/Files';
+import Images from '/lib/Images';
+import Pdf from '/lib/Pdf';
+import { Session } from 'meteor/session'
 var a = 0;
 Template.SLayout.onRendered(function() {
     Meteor.subscribe('users');
+    Meteor.subscribe('Projects');
+    Meteor.subscribe('Chat');
+   
     var self = this;
     if (a === 1) {
         //no shit
@@ -29,21 +33,24 @@ Template.SLayout.helpers({
             return false;
         }
     },
-    'username': function() {
-        if (Meteor.userId()) {
-            return Meteor.user().username;
-        } else {
-            return "";
-        }
+    ready:function(){
+    
+    return FlowRouter.subsReady("users")
+    
+  
+ },
+    'GetUsername': function() {
+       return "username"
     }
 });
 
 Template.SLayout.events({
     'click #logout' () {
-		FlowRouter.go('/');
-        Meteor.logout();
-		location.reload();
-	
-    }
+         
+        Meteor.logout();	
+    },
 
+    'click .step_one' () { 
+            FlowRouter.go("/StepOne") ;
+        },
 });

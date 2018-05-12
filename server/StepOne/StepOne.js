@@ -13,7 +13,8 @@ Meteor.startup(() => {
                     Name: Name,
                     Description: Description,
                     Manager: Manager,
-                    Collaborators: Collaborators
+                    Collaborators: Collaborators,
+                    Status:"En cours"
                 });
                 if (result) {
                     return result;

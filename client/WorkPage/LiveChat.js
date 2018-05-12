@@ -1,11 +1,16 @@
 import { Template } from 'meteor/templating';
+import { Meteor } from 'meteor/meteor'
+import Files from '/lib/Files';
+import Images from '/lib/Images';
+import Pdf from '/lib/Pdf';
 
-Template.LiveChat.onRendered(function infoOnCreated() {
-
-    Meteor.subscribe('Chat', FlowRouter.getParam("postId"));
-
+Template.LiveChat.onRendered(function() {
+    Meteor.subscribe('users');
+    Meteor.subscribe('Projects');
+    Meteor.subscribe('Chat');
 
 });
+
 Template.LiveChat.events({
     'click #live-chat header': function() {
         $('.chat').slideToggle(300, 'swing');
@@ -47,10 +52,13 @@ Template.LiveChat.helpers({
 
 Template.LivechatMobile.onRendered(function infoOnCreated() {
 
-    Meteor.subscribe('Chat', FlowRouter.getParam("postId"));
-
+    Meteor.subscribe('users');
+    Meteor.subscribe('Projects');
+    Meteor.subscribe('Chat');
 
 });
+
+
 Template.LivechatMobile.events({
     'click #live-chat header': function() {
         $('.chat').slideToggle(300, 'swing');
