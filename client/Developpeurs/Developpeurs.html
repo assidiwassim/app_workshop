@@ -7,65 +7,46 @@
 <br>
 <br>
 <div class="row">
-	<div class="col-md-3">
-	<div class="box box-primary">
+ {{#if  ExisteDeveloppeur}}
+                              {{#each  ListeDeveloppeur}}
+  <div class="col-md-3">
+  <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="/user.png" alt="User profile picture">
+            
+                            {{#if  ExisteImageProfileUtilisateur _id}}
+                              {{#each  file in ImageProfileUtilisateur.each _id}}
+                                <img class="profile-user-img img-responsive img-circle" src="{{file.link}}" >
+                              {{/each}}
+                              {{else}}
+                               <img class="profile-user-img img-responsive img-circle" src="/user.png">
+                              {{/if}}
+              <h3 class="profile-username text-center">{{username}}</h3>
 
-              <h3 class="profile-username text-center">Nina Mcintire</h3>
-
-              <p class="text-muted text-center">Software Engineer</p>
+              <p class="text-muted text-center">Developpeur</p>
 
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
-                  <b>Manager en </b> <a class="pull-right">1,322 projets</a>
+                  <b>Manager en </b> <a class="pull-right">{{NbrProjectUser}} projets</a>
                 </li>
                 <li class="list-group-item">
-                  <b>Collaborateur en</b> <a class="pull-right">543 projets</a>
-                </li>
-                <li class="list-group-item">
-                  <b>Téléchager le cv</b> <a class="pull-right">Cliquer ici</a>
-                </li>
+                  <b>Collaborateur en</b> <a class="pull-right">{{NbrProjectcollaborator}} projets</a>
+                </li >
+                  {{#if  ExisteCvUtilisateur}}
+                              {{#each  file in CvUtilisateur.each}}
+                               <li class="list-group-item"><b>Télécharger le cv</b><a href="{{file.link}}?download=true"  target="_blank" download="{{file.name}}">   <i class="fa fa-download pull-right" style="color:#367FA9; font-size: 22px;"></i></a></li>
+                                  {{/each}}
+                                  {{/if}}
               </ul>
 
-              <a href="#" class="btn btn-primary btn-block"><b>Contact</b></a>
-            </div>
-            <!-- /.box-body -->
-          </div>
-      </div>
+              <a href="#" class="btn btn-primary btn-block"  data-toggle="modal" data-target="#modal-default-{{_id}}"><b>Contact</b></a>
 
-
-<div class="col-md-3">
-	<div class="box box-primary">
-            <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="/user.png" alt="User profile picture">
-
-              <h3 class="profile-username text-center">Nina Mcintire</h3>
-
-              <p class="text-muted text-center">Software Engineer</p>
-
-              <ul class="list-group list-group-unbordered">
-               <li class="list-group-item">
-                  <b>Manager en </b> <a class="pull-right">1,322 projets</a>
-                </li>
-                <li class="list-group-item">
-                  <b>Collaborateur en</b> <a class="pull-right">543 projets</a>
-                </li>
-                <li class="list-group-item">
-                  <b>Téléchager le cv</b> <a class="pull-right">Cliquer ici</a>
-                </li>
-              </ul>
-
-              <a href="#" class="btn btn-primary btn-block"  data-toggle="modal" data-target="#modal-default"><b>Contact</b></a>
-             
-
-              <div class="modal fade" id="modal-default" style="display: none;">
+        <div class="modal fade" id="modal-default-{{_id}}" style="display: none;">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">Contact</h4>
+                <h4 class="modal-title">Contacter {{username}}</h4>
               </div>
               <div class="modal-body">
                <div class="box box-primary direct-chat direct-chat-primary">
@@ -90,22 +71,7 @@
                     </div>
                     <!-- /.direct-chat-msg -->
 
-                    <!-- Message to the right -->
-                    <div class="direct-chat-msg right">
-                      <div class="direct-chat-info clearfix">
-                        <span class="direct-chat-name pull-right">Sarah Bullock</span>
-                        <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
-                      </div>
-                      <!-- /.direct-chat-info -->
-                      <img class="direct-chat-img" src="/user.png" alt="message user image">
-                      <!-- /.direct-chat-img -->
-                      <div class="direct-chat-text">
-                        You better believe it!
-                      </div>
-                      <!-- /.direct-chat-text -->
-                    </div>
-                    <!-- /.direct-chat-msg -->
-
+                   
                     <!-- Message. Default to the left -->
                     <div class="direct-chat-msg">
                       <div class="direct-chat-info clearfix">
@@ -142,102 +108,7 @@
                   <!--/.direct-chat-messages-->
 
                   <!-- Contacts are loaded here -->
-                  <div class="direct-chat-contacts">
-                    <ul class="contacts-list">
-                      <li>
-                        <a href="#">
-                          <img class="contacts-list-img" src="/user.png" alt="User Image">
-
-                          <div class="contacts-list-info">
-                                <span class="contacts-list-name">
-                                  Count Dracula
-                                  <small class="contacts-list-date pull-right">2/28/2015</small>
-                                </span>
-                            <span class="contacts-list-msg">How have you been? I was...</span>
-                          </div>
-                          <!-- /.contacts-list-info -->
-                        </a>
-                      </li>
-                      <!-- End Contact Item -->
-                      <li>
-                        <a href="#">
-                          <img class="contacts-list-img" src="/user.png" alt="User Image">
-
-                          <div class="contacts-list-info">
-                                <span class="contacts-list-name">
-                                  Sarah Doe
-                                  <small class="contacts-list-date pull-right">2/23/2015</small>
-                                </span>
-                            <span class="contacts-list-msg">I will be waiting for...</span>
-                          </div>
-                          <!-- /.contacts-list-info -->
-                        </a>
-                      </li>
-                      <!-- End Contact Item -->
-                      <li>
-                        <a href="#">
-                          <img class="contacts-list-img" src="/user.png" alt="User Image">
-
-                          <div class="contacts-list-info">
-                                <span class="contacts-list-name">
-                                  Nadia Jolie
-                                  <small class="contacts-list-date pull-right">2/20/2015</small>
-                                </span>
-                            <span class="contacts-list-msg">I'll call you back at...</span>
-                          </div>
-                          <!-- /.contacts-list-info -->
-                        </a>
-                      </li>
-                      <!-- End Contact Item -->
-                      <li>
-                        <a href="#">
-                          <img class="contacts-list-img" src="/user.png" alt="User Image">
-
-                          <div class="contacts-list-info">
-                                <span class="contacts-list-name">
-                                  Nora S. Vans
-                                  <small class="contacts-list-date pull-right">2/10/2015</small>
-                                </span>
-                            <span class="contacts-list-msg">Where is your new...</span>
-                          </div>
-                          <!-- /.contacts-list-info -->
-                        </a>
-                      </li>
-                      <!-- End Contact Item -->
-                      <li>
-                        <a href="#">
-                          <img class="contacts-list-img" src="/user.png" alt="User Image">
-
-                          <div class="contacts-list-info">
-                                <span class="contacts-list-name">
-                                  John K.
-                                  <small class="contacts-list-date pull-right">1/27/2015</small>
-                                </span>
-                            <span class="contacts-list-msg">Can I take a look at...</span>
-                          </div>
-                          <!-- /.contacts-list-info -->
-                        </a>
-                      </li>
-                      <!-- End Contact Item -->
-                      <li>
-                        <a href="#">
-                          <img class="contacts-list-img" src="/user.png" alt="User Image">
-
-                          <div class="contacts-list-info">
-                                <span class="contacts-list-name">
-                                  Kenneth M.
-                                  <small class="contacts-list-date pull-right">1/4/2015</small>
-                                </span>
-                            <span class="contacts-list-msg">Never mind I found...</span>
-                          </div>
-                          <!-- /.contacts-list-info -->
-                        </a>
-                      </li>
-                      <!-- End Contact Item -->
-                    </ul>
-                    <!-- /.contatcts-list -->
-                  </div>
-                  <!-- /.direct-chat-pane -->
+                
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
@@ -265,7 +136,17 @@
             </div>
             <!-- /.box-body -->
           </div>
+      </div>
+{{/each}}
+{{else}}
+<div class="col-md-12">
+  <h3>Aucun developpeur </h3>
 </div>
+
+{{/if}}
+
+
+
 
 
 

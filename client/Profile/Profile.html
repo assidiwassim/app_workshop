@@ -8,11 +8,18 @@
 							            <!-- Add the bg color to the header using any of the bg-* classes -->
 							            <div class="widget-user-header bg-blue">
 							              <div class="widget-user-image">
-							                <img class="img-circle" src="/user.png" alt="User Avatar">
+							              	 {{#if  ExisteImageProfileUtilisateur}}
+          										{{#each  file in ImageProfileUtilisateur.each}}
+							                <img class="img-circle" src="{{file.link}}" alt="User Avatar">
+							                {{/each}}
+							                {{else}}
+  											 <img class="img-circle" src="/user.png" alt="User Avatar">
+							                {{/if}}
 							              </div>
 							              <!-- /.widget-user-image -->
 							              <h3 class="widget-user-username">{{Getusername}}</h3>
-							              <h5 class="widget-user-desc">{{GetEmail}}</h5>
+							              <h5 class="widget-user-desc hidden-xs">{{GetEmail}}</h5>
+							              <h5 class="widget-user-desc visible-xs">Developpeur</h5>
 							            </div>
 							            <div class="box-footer no-padding">
 							              <ul class="nav nav-stacked">
@@ -21,6 +28,11 @@
 							                <li><a href="#">Projets en cours <span class="pull-right badge bg-blue">{{NbrProjectUserEnCours}}</span></a></li>
 							                <li><a href="#">Projets terminées <span class="pull-right badge bg-green">{{NbrProjectUserTerminée}}</span></a></li>
 							                <li><a href="#">Projets Annuler  <span class="pull-right badge bg-red">{{NbrProjectUserAnnuler}}</span></a></li>
+							                 {{#if  ExisteCvUtilisateur}}
+          										{{#each  file in CvUtilisateur.each}}
+							                 <li><a href="{{file.link}}?download=true"  target="_blank" download="{{file.name}}">Télécharger votre cv   <i class="fa fa-download pull-right" style="color:#367FA9; font-size: 22px;"></i></a></li>
+							                    {{/each}}
+							                    {{/if}}
 							              </ul>
 							            </div>
 							          </div>
@@ -38,7 +50,7 @@
 								              <div class="modal-body">
 								              <div class="box box-primary">										          <!-- /.box-header -->
 										            <!-- form start -->
-										            <form role="form">
+										           
 										              <div class="box-body">
 										              
 										                <div class="form-group">
@@ -55,11 +67,11 @@
 										              <!-- /.box-body -->
 
 										              <div class="box-footer">
-										                <button type="submit" class="btn btn-primary pull-right">Ajouter</button>
+										                <input type="button" class="btn btn-primary pull-right upload" value="Ajouter" data-dismiss="modal"/>
 										                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Annuler</button>
 								               
 										              </div>
-										            </form>
+										            
 										          </div>
 								              </div>
 								           
