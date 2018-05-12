@@ -16,18 +16,10 @@ Template.Login.events({
             if (err) {
                 Bert.alert(err.reason, 'danger', 'growl-bottom-right');
             } else {
-
-
-                Bert.alert({
-                    icon: 'fa-user-o',
-                    title: 'hello ' + Meteor.user().username,
-                    message: 'Welcome in workShop.com'
-                });
                 FlowRouter.go('/MyAccount');
             }
 
         });
-
 
         target.Email.value = '';
         target.Password.value = '';
