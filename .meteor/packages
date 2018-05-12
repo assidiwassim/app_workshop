@@ -35,3 +35,9 @@ ostrio:templatehelpers
 ostrio:files
 dynamic-import@0.2.0
 aldeed:simple-schema
+
+yp2:admin-lte                               # AdminLte.io
+mizzao:user-status                          # Détection des utilisateurs connecté
+matdutour:popup-confirm                     # popupconfirm
+u2622:persistent-session                    # session
+tomwasd:flow-router-autoscroll              # Scroll
