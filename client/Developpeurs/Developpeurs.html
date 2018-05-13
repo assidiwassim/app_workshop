@@ -35,6 +35,8 @@
                               {{#each  file in CvUtilisateur.each}}
                                <li class="list-group-item"><b>Télécharger le cv</b><a href="{{file.link}}?download=true"  target="_blank" download="{{file.name}}">   <i class="fa fa-download pull-right" style="color:#367FA9; font-size: 22px;"></i></a></li>
                                   {{/each}}
+                                  {{else}}
+                                  <li class="list-group-item"><b>CV non disponible</b></li>
                                   {{/if}}
               </ul>
 

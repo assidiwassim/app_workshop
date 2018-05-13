@@ -40,7 +40,7 @@ Template.SLayout.helpers({
   
  },
     'GetUsername': function() {
-       return "username"
+       return Meteor.user().username;
     }
 });
 
