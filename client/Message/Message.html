@@ -1,220 +1,121 @@
 <template name="Message">
-	<br><br><br>
-        <div id="Message">
-               <div class="container"> 
-               	<div class="row">
-               		<div class="col-md-3">
-               			<div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Liste des developpeurs</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <ul class="products-list product-list-in-box "  style="height: 75vh;overflow: auto;">
-                <li class="item">
-                  <div class="product-img">
-                    <img src="/user.png" alt="Product Image">
-                  </div>
-                  <div class="product-info">
-                    <a href="javascript:void(0)" class="product-title">Samsung TV
-                      <span class="label label-warning pull-right">$1800</span></a>
-                    <span class="product-description">
-                          Samsung 32" 1080p 60Hz LED Smart HDTV.
-                        </span>
-                  </div>
-                </li>
-                 <li class="item">
-                  <div class="product-img">
-                    <img src="/user.png" alt="Product Image">
-                  </div>
-                  <div class="product-info">
-                    <a href="javascript:void(0)" class="product-title">Samsung TV
-                      <span class="label label-warning pull-right">$1800</span></a>
-                    <span class="product-description">
-                          Samsung 32" 1080p 60Hz LED Smart HDTV.
-                        </span>
-                  </div>
-                </li>
-                 <li class="item">
-                  <div class="product-img">
-                    <img src="/user.png" alt="Product Image">
-                  </div>
-                  <div class="product-info">
-                    <a href="javascript:void(0)" class="product-title">Samsung TV
-                      <span class="label label-warning pull-right">$1800</span></a>
-                    <span class="product-description">
-                          Samsung 32" 1080p 60Hz LED Smart HDTV.
-                        </span>
-                  </div>
-                </li>
-                 <li class="item">
-                  <div class="product-img">
-                    <img src="/user.png" alt="Product Image">
-                  </div>
-                  <div class="product-info">
-                    <a href="javascript:void(0)" class="product-title">Samsung TV
-                      <span class="label label-warning pull-right">$1800</span></a>
-                    <span class="product-description">
-                          Samsung 32" 1080p 60Hz LED Smart HDTV.
-                        </span>
-                  </div>
-                </li>
-                <!-- /.item -->
-                <li class="item">
-                  <div class="product-img">
-                    <img src="/user.png" alt="Product Image">
-                  </div>
-                  <div class="product-info">
-                    <a href="javascript:void(0)" class="product-title">Bicycle
-                      <span class="label label-info pull-right">$700</span></a>
-                    <span class="product-description">
-                          26" Mongoose Dolomite Men's 7-speed, Navy Blue.
-                        </span>
-                  </div>
-                </li>
-                <!-- /.item -->
-                <li class="item">
-                  <div class="product-img">
-                    <img src="/user.png" alt="Product Image">
-                  </div>
-                  <div class="product-info">
-                    <a href="javascript:void(0)" class="product-title">Xbox One <span class="label label-danger pull-right">$350</span></a>
-                    <span class="product-description">
-                          Xbox One Console Bundle with Halo Master Chief Collection.
-                        </span>
-                  </div>
-                </li>
-                <!-- /.item -->
-                <li class="item">
-                  <div class="product-img">
-                    <img src="/user.png" alt="Product Image">
-                  </div>
-                  <div class="product-info">
-                    <a href="javascript:void(0)" class="product-title">PlayStation 4
-                      <span class="label label-success pull-right">$399</span></a>
-                    <span class="product-description">
-                          PlayStation 4 500GB Console (PS4)
-                        </span>
-                  </div>
-                </li>
-                <!-- /.item -->
-              </ul>
-            </div>
-            <!-- /.box-body -->
-           
-            <!-- /.box-footer -->
-          </div>
-               		</div>
-               		<div class="col-md-9">
-               			<div class="box box-primary direct-chat direct-chat-primary" >
+  <br><br> <br>
+<div id="Message">
+<div class="col-md-3">
+        <div class="box box-default direct-chat direct-chat-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Direct Chat</h3>
-
-                  <div class="box-tools pull-right">
-                    <span data-toggle="tooltip" title="" class="badge bg-blue" data-original-title="3 New Messages">3</span>
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="" data-widget="chat-pane-toggle" data-original-title="Contacts">
-                      <i class="fa fa-comments"></i></button>
-                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                    </button>
-                  </div>
+                  Utilisateurs
                 </div>
-                <!-- /.box-header -->
-                <div class="box-body " >
-                  <!-- Conversations are loaded here -->
-                  <div class="direct-chat-messages " style="height: 70vh">
-                    <!-- Message. Default to the left -->
-                    <div class="direct-chat-msg">
-                      <div class="direct-chat-info clearfix">
-                        <span class="direct-chat-name pull-left">Alexander Pierce</span>
-                        <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
-                      </div>
-                      <!-- /.direct-chat-info -->
-                      <img class="direct-chat-img" src="/user.png" alt="message user image">
-                      <!-- /.direct-chat-img -->
-                      <div class="direct-chat-text">
-                        Is this template really for free? That's unbelievable!
-                      </div>
-                      <!-- /.direct-chat-text -->
-                    </div>
-                    <!-- /.direct-chat-msg -->
+        <!-- /.box-header -->
+        <div class="box-body no-padding userlist">
+          <div class="table-responsive mailbox-messages">
+            <table class="table table-hover table-striped">
+              <tbody>
+                {{#each  item in  ListUsers}}
+              <tr>
+                  {{#if me item}}
+                  {{else}}
+                  <td class="mailbox-name ">
+                    <a class="item" >{{GetName item}}</a> 
+                    {{#if ExisteMessagesNonVue item}}
+                    <span class="badge bg-red">{{ListMessagesNonVue item}}</span>
+                    {{/if}}
+                  </td>
+                  {{/if}}
+              </tr>
+              {{/each}}
+              </tbody>
+            </table>
+            <!-- /.table -->
+          </div>
+          <!-- /.mail-box-messages -->
+        </div>
+        <!-- /.box-body -->
+      </div>
+    </div>
+    <div class="col-md-9">
+      {{#if Click_User}}
+      <div class="box box-default direct-chat direct-chat-primary">
+        <div class="box-header with-border open-box-chat">
+          <h3 class="box-title">Contacter {{ currentNameSender}} </h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <!-- Conversations are loaded here -->
+          <div class="direct-chat-messages">
 
-                    <!-- Message to the right -->
-                    <div class="direct-chat-msg right">
-                      <div class="direct-chat-info clearfix">
-                        <span class="direct-chat-name pull-right">Sarah Bullock</span>
-                        <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
-                      </div>
-                      <!-- /.direct-chat-info -->
-                      <img class="direct-chat-img" src="/user.png" alt="message user image">
-                      <!-- /.direct-chat-img -->
-                      <div class="direct-chat-text">
-                        You better believe it!
-                      </div>
-                      <!-- /.direct-chat-text -->
-                    </div>
-                    <!-- /.direct-chat-msg -->
-
-                    <!-- Message. Default to the left -->
-                    <div class="direct-chat-msg">
-                      <div class="direct-chat-info clearfix">
-                        <span class="direct-chat-name pull-left">Alexander Pierce</span>
-                        <span class="direct-chat-timestamp pull-right">23 Jan 5:37 pm</span>
-                      </div>
-                      <!-- /.direct-chat-info -->
-                      <img class="direct-chat-img" src="/user.png" alt="message user image">
-                      <!-- /.direct-chat-img -->
-                      <div class="direct-chat-text">
-                        Working with AdminLTE on a great new app! Wanna join?
-                      </div>
-                      <!-- /.direct-chat-text -->
-                    </div>
-                    <!-- /.direct-chat-msg -->
-
-                    <!-- Message to the right -->
-                    <div class="direct-chat-msg right">
-                      <div class="direct-chat-info clearfix">
-                        <span class="direct-chat-name pull-right">Sarah Bullock</span>
-                        <span class="direct-chat-timestamp pull-left">23 Jan 6:10 pm</span>
-                      </div>
-                      <!-- /.direct-chat-info -->
-                      <img class="direct-chat-img" src="/user.png" alt="message user image">
-                      <!-- /.direct-chat-img -->
-                      <div class="direct-chat-text">
-                        I would love to.
-                      </div>
-                      <!-- /.direct-chat-text -->
-                    </div>
-                    <!-- /.direct-chat-msg -->
-
-                  </div>
-                  <!--/.direct-chat-messages-->
-
-                
-    
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer">
-                  <form action="#" method="post">
-                    <div class="input-group">
-                      <input type="text" name="message" placeholder="Type Message ..." class="form-control">
-                      <span class="input-group-btn">
-                            <button type="button" class="btn btn-warning btn-flat">Send</button>
-                          </span>
-                    </div>
-                  </form>
-                </div>
-                <!-- /.box-footer-->
-              </div>
-               		</div>
-               	</div>
-               </div>
+            {{#each ListMessages}}
+            {{#if me from}}
+           <!-- Message to the right -->
+           <div class="direct-chat-msg right">
+            <div class="direct-chat-info clearfix">
+              <span class="direct-chat-name pull-right">{{ GetName from}}</span>
+              <span class="direct-chat-timestamp pull-left"> {{date}}</span>
             </div>
- </template>
+            <!-- /.direct-chat-info -->
+                {{#if  ExisteImageProfileUtilisateurChat from}}
+                              {{#each   ImageProfileUtilisateurChat from}}
+                              <img class="direct-chat-img" src="/cdn/storage/Images/9eZcGBnM4YbknnEbT/original/{{from}}.ext" alt="message user image">
+                              {{/each}}
+
+                      {{else}}
+
+                      <img class="direct-chat-img" src="/user.png" alt="message user image">
+                      <!-- /.direct-chat-img -->
+                      {{/if}}
+            <!-- /.direct-chat-img -->
+            <div class="direct-chat-text">
+              {{msg}}
+            </div>
+            <!-- /.direct-chat-text -->
+          </div>
+          <!-- /.direct-chat-msg -->
+              {{else}}
+               <!-- Message. Default to the left -->
+            <div class="direct-chat-msg">
+              <div class="direct-chat-info clearfix">
+                <span class="direct-chat-name pull-left">{{GetName from}}</span>
+                <span class="direct-chat-timestamp pull-right">{{ date}}</span>
+              </div>
+              <!-- /.direct-chat-info -->
+                 {{#if  ExisteImageProfileUtilisateurChat from}}
+                              {{#each   ImageProfileUtilisateurChat from}}
+                              <img class="direct-chat-img" src="/cdn/storage/Images/9eZcGBnM4YbknnEbT/original/{{from}}.ext" alt="message user image">
+                              {{/each}}
+
+                      {{else}}
+
+                      <img class="direct-chat-img" src="/user.png" alt="message user image">
+                      <!-- /.direct-chat-img -->
+                      {{/if}}
+              <!-- /.direct-chat-img -->
+              <div class="direct-chat-text">
+                {{msg}}
+              </div>
+              <!-- /.direct-chat-text -->
+            </div>
+            <!-- /.direct-chat-msg -->
+            
+            {{/if}}
+              {{/each}}
+          </div>
+          <!--/.direct-chat-messages-->              
+        </div>
+
+        <!-- /.box-body -->
+        <div class="box-footer">
+          <form>
+            <div class="input-group">
+              <input type="text" name="message" placeholder="Taper un message ..." class="form-control">
+              <span class="input-group-btn">
+                    <button type="submit"  class="btn btn-primary btn-flat">Envoyer</button>
+              </span>
+            </div>
+          </form>
+        </div>
+        <!-- /.box-footer-->
+      </div>
+      {{/if}}
+    </div>
+    </div>
+</template>

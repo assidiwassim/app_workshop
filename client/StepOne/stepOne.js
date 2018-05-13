@@ -1,14 +1,6 @@
 import { Template } from 'meteor/templating';
-import { Meteor } from 'meteor/meteor'
-import Files from '/lib/Files';
-import Images from '/lib/Images';
-import Pdf from '/lib/Pdf';
 
-Template.StepOne.onRendered(function() {
-    Meteor.subscribe('users');
-    Meteor.subscribe('Projects');
-    Meteor.subscribe('Chat');
-});
+
 List = [];
 
 someTest = false;
@@ -39,7 +31,12 @@ Template.StepOne.events({
     },
 
     'change .list-group-item input' (event) {
+        // Prevent default browser form submit
+
+
         event.preventDefault();
+
+
         var index = List.indexOf(this.username);
 
         if (index > -1) {
@@ -47,14 +44,25 @@ Template.StepOne.events({
         } else {
             List.push(this.username);
         }
+        // Get value from form element
+
+
     }
+
+});
+
+Template.StepOne.onRendered(function infoOnCreated() {
+
+    Meteor.subscribe('AllUsers');
+
+
 
 });
 
 
 Template.StepOne.helpers({
     'AllUsers': function() {
-        return Meteor.users.find();
+        return Meteor.users.find().fetch();
     },
 
     'FindList': function() {

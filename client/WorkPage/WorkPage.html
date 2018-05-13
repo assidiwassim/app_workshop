@@ -12,16 +12,29 @@
                     </div>
                     <div id="list-group" class="list-group">
                         <span href="#" class="list-group-item active">
-                            ProjectName
+                            {{getProjectName}}
                             <span class="pull-right" id="slide-submenu">
                                 <i class="fa fa-times"></i>
                             </span>
                         </span>
                         <div class="scroll_liste ">
                                 {{#each file in FilesList.each}}
-                        <a data-value="{{file._id}}" class="list-group-item" >
-                             {{subname file.name }}  <i class="fa fa-download pull-right"></i>                     
-                          </a>
+                                {{#if done file._id}}
+                        <a data-value="{{file._id}}" class="list-group-item disabled"  >
+                             {{subname file.name }}  <i class="fa fa-download pull-right"> </i>{{file.meta.state}} %               
+                         </a>
+                        
+                          {{else}}
+                          <a data-value="{{file._id}}" class="list-group-item" >
+                                {{subname file.name }}  <i class="fa fa-download pull-right"> </i>{{file.meta.state}} %               
+                             </a>
+                             {{#if manager}}
+                             
+                             <input type="range" min="0" max="100" value="{{file.meta.state}}" class="slider" id="myRange"> {{getRangevalue}}
+                             <input type="submit" data-value="{{file._id}}" value="changeValue" id="changeValue" class="btn btn-primary">
+                             {{/if}}
+
+                          {{/if}}
                         {{/each}}
                         </div>
                     </div>        
@@ -31,8 +44,8 @@
               <div class="row">
                 <div class="col-xs-8 col-md-10 ">
                         <ol class="breadcrumb breadcrumb_style"> 
-                                <li><a href="#">ProjectsName</a></li>
-                                <li><a href="#">FileName</a></li>
+                                <li><a href="#">{{getProjectName}}</a></li>
+                              
                               </ol>
                 </div>
                 <div class="col-xs-4   col-md-2">
@@ -57,7 +70,9 @@
       
     </div>
 </div>
+
 </div>
+
 <div class="hidden-xs">
             <br>   
              {{>LiveChat}}

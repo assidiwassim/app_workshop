@@ -71,4 +71,73 @@ Template.Developpeurs.helpers({
             return false;
     },
 
+     'ImageProfileUtilisateurChat': function(id) {
+        console.log(id)
+        
+        return Images.find({ 'meta.uid':id  }, { sort: { 'meta.CreatedAt': -1 }, limit: 1 });
+    },
+     'ExisteImageProfileUtilisateurChat': function(id) {
+        console.log(id)
+        if(Images.find({ 'meta.uid': id }, { sort: { 'meta.CreatedAt': -1 }, limit: 1 }).count()>0)
+            return true;
+        else
+            return false;
+    },
+
+    'MessagesList'()
+    {
+        return Messages.find({
+         
+  "$or": [
+             {
+                "$and": [
+                   {'from':this._id},
+                    {'to':Meteor.userId()} /* or { "isDeleted": { "$exists": false } } */
+                ]
+            },
+            {
+                "$and": [
+                    {'from':Meteor.userId()},
+                      {'to':this._id}/* or { "isDeleted": { "$exists": false } } */
+                ]
+            }
+        ]
+
+
+
+
+        })
+    },
+
+    'NotMe'(from){
+        return from!==Meteor.userId()
+    },
+    'GetName'(id){
+      const name=  Meteor.users.find({_id:id}).fetch();
+        return name[0].username;
+    }
+
 });
+
+
+Template.Developpeurs.events({
+
+    'click .send'(){
+
+        const msg =$('#msg').val();
+        const to =this._id;
+        const from =Meteor.userId();
+        if(msg!="")
+        Meteor.call('SendsMessage',from,to,msg,(err,res)=>{
+            if(err){
+                console.log(err)
+            }
+            else{
+              
+                $('#msg').val("")
+            }
+        })
+
+
+    }
+})

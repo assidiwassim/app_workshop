@@ -1,5 +1,12 @@
+#Message .item {
+    cursor: pointer;
+}
 
-#Message {
-    width: 100%;
-    height:  100%;
+#Message .direct-chat-messages {
+    height: 70vh;
+}
+
+#Message .userlist {
+    overflow-y: auto;
+    height: 78vh;
 }

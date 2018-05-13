@@ -1,15 +1,7 @@
 import { Template } from 'meteor/templating';
-import { Meteor } from 'meteor/meteor'
 import Files from '/lib/Files';
-import Images from '/lib/Images';
-import Pdf from '/lib/Pdf';
 
-Template.WorkPage.onRendered(function() {
-    Meteor.subscribe('users');
-    Meteor.subscribe('Projects');
-    Meteor.subscribe('Chat');
-     this.file =  new ReactiveVar();
-});
+
 
 
 Template.WorkPage.events({
@@ -46,8 +38,8 @@ Template.WorkPage.events({
     },
     'click #SaveButton':function(e,template){
         const file= template.file.get();
-        console.log(file._id)
-    Meteor.call('remove', file._id, function(error, success) { 
+        
+        Meteor.call('remove', file._id,file.name, function(error, success) { 
         if (error) { 
             console.log('error', error); 
         } 
@@ -65,13 +57,37 @@ Template.WorkPage.events({
     });
         
 
+    },
+    'click #UploadButton'(){
+        var IdProject = FlowRouter.getParam("postId");
+        FlowRouter.go('/StepTwo/'+IdProject);
+    },
+    'change #myRange':function(e,template){
+        
+        template.Range.set(e.currentTarget.value);
+        
+    },
+    'click #changeValue'(event,template){
+        var id=event.currentTarget.dataset.value;
+        var inewValue=template.Range.get();
+        var IdProject = FlowRouter.getParam("postId");
+        Meteor.call('file.update', id,inewValue,IdProject, function(error, success) { 
+            if (error) { 
+                console.log('error', error); 
+            } 
+            if (success) { 
+                 
+            } 
+        });
     }
 
 });
 
 
 Template.WorkPage.onRendered(function infoOnCreated() {
-
+    
+    this.file =  new ReactiveVar();
+    this.Range =  new ReactiveVar();
 
     $(document).ready(function() {
         $('#summernote').summernote({
@@ -92,13 +108,37 @@ Template.WorkPage.onRendered(function infoOnCreated() {
 
 Template.WorkPage.helpers({
     FilesList: function () {
-        var IdProject = FlowRouter.getParam("postId");
+    var IdProject = FlowRouter.getParam("postId");
       const f= Files.find({'meta.id':IdProject});
-      console.log(f)
       return f
     },
     subname:function(name){
-        return name.substr(-11)
+        var IdProject = FlowRouter.getParam("postId");
+        var ret = name.replace(IdProject+' ','');
+        return ret;
+    },
+    getProjectName:function(){
+        var IdProject = FlowRouter.getParam("postId");
+       const name= Projects.find({_id:IdProject}).fetch();
+        return name[0].Name;
+    },
+    getRangevalue:function(e,template){
+       
+        return Template.instance().Range.get();
+  
+    },
+    manager:function(){
+        var IdProject = FlowRouter.getParam("postId");
+      const p=  Projects.find({_id:IdProject}).fetch();
+         return(p[0].Manager===Meteor.userId())
+    },
+
+    done:function(id){
+        const f= Files.find({'_id':id}).fetch();
+        return (f[0].meta.state==100)
     }
+   
+  
+    
   
   });

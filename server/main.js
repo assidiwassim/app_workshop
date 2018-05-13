@@ -16,6 +16,8 @@ Meteor.startup(() => {
  Meteor.publish('Chat', function() {
         return Chat.find();
     })
-
+ Meteor.publish('Messages', function() {
+        return Messages.find();
+    })
 
 });

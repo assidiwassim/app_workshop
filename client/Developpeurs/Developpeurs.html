@@ -58,53 +58,66 @@
                   <!-- Conversations are loaded here -->
                   <div class="direct-chat-messages">
                     <!-- Message. Default to the left -->
+
+{{#each MessagesList}}
+
+
+{{#if NotMe from}}
+
                     <div class="direct-chat-msg">
                       <div class="direct-chat-info clearfix">
-                        <span class="direct-chat-name pull-left">Alexander Pierce</span>
-                        <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
+                        <span class="direct-chat-name pull-left">{{GetName from}}</span>
+                        <span class="direct-chat-timestamp pull-right">{{date}}</span>
                       </div>
                       <!-- /.direct-chat-info -->
+                      {{#if  ExisteImageProfileUtilisateurChat from}}
+                              {{#each  ImageProfileUtilisateurChat from}}
+                              <img class="direct-chat-img" src="/cdn/storage/Images/9eZcGBnM4YbknnEbT/original/{{from}}.ext" alt="message user image">
+                              {{/each}}
+
+                      {{else}}
+
                       <img class="direct-chat-img" src="/user.png" alt="message user image">
                       <!-- /.direct-chat-img -->
+                      {{/if}}
                       <div class="direct-chat-text">
-                        Is this template really for free? That's unbelievable!
+                        {{msg}}
                       </div>
                       <!-- /.direct-chat-text -->
                     </div>
                     <!-- /.direct-chat-msg -->
 
-                   
-                    <!-- Message. Default to the left -->
-                    <div class="direct-chat-msg">
-                      <div class="direct-chat-info clearfix">
-                        <span class="direct-chat-name pull-left">Alexander Pierce</span>
-                        <span class="direct-chat-timestamp pull-right">23 Jan 5:37 pm</span>
-                      </div>
-                      <!-- /.direct-chat-info -->
-                      <img class="direct-chat-img" src="/user.png" alt="message user image">
-                      <!-- /.direct-chat-img -->
-                      <div class="direct-chat-text">
-                        Working with AdminLTE on a great new app! Wanna join?
-                      </div>
-                      <!-- /.direct-chat-text -->
-                    </div>
+{{else}}
                     <!-- /.direct-chat-msg -->
 
                     <!-- Message to the right -->
                     <div class="direct-chat-msg right">
                       <div class="direct-chat-info clearfix">
-                        <span class="direct-chat-name pull-right">Sarah Bullock</span>
-                        <span class="direct-chat-timestamp pull-left">23 Jan 6:10 pm</span>
+                        <span class="direct-chat-name pull-right">{{GetName from}}</span>
+                        <span class="direct-chat-timestamp pull-left">{{date}}</span>
                       </div>
                       <!-- /.direct-chat-info -->
+                           {{#if  ExisteImageProfileUtilisateurChat from}}
+                              {{#each   ImageProfileUtilisateurChat from}}
+                              <img class="direct-chat-img" src="/cdn/storage/Images/9eZcGBnM4YbknnEbT/original/{{from}}.ext" alt="message user image">
+                              {{/each}}
+
+                      {{else}}
+
                       <img class="direct-chat-img" src="/user.png" alt="message user image">
                       <!-- /.direct-chat-img -->
+                      {{/if}}
+                      <!-- /.direct-chat-img -->
                       <div class="direct-chat-text">
-                        I would love to.
+                        {{msg}}
                       </div>
                       <!-- /.direct-chat-text -->
                     </div>
                     <!-- /.direct-chat-msg -->
+{{/if}}
+
+
+{{/each}}
 
                   </div>
                   <!--/.direct-chat-messages-->
@@ -114,14 +127,14 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                  <form action="#" method="post">
+                  
                     <div class="input-group">
-                      <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                      <input type="text" id="msg" placeholder="Type Message ..." class="form-control">
                       <span class="input-group-btn">
-                            <button type="button" class="btn btn-primary btn-flat">Send</button>
+                            <button type="button" class="btn btn-primary btn-flat send">Send</button>
                           </span>
                     </div>
-                  </form>
+                
                 </div>
                 <!-- /.box-footer-->
               </div>

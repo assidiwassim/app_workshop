@@ -41,55 +41,110 @@
 							          <a href="/StepOne" class="btn btn-primary btn-flat btn-block">Créer un nouveau projet</a>
 			</div>
 			<div class="col-md-9">
-             <!-- Nav tabs -->
-					<div class="card">
+          
+
+				<!-- Nav tabs -->
+                    <div class="card">
                         <ul class="nav nav-tabs" role="tablist">
-							<li role="presentation" class="active"><a href="#Mes_projets" aria-controls="Mes_projets" role="tab" data-toggle="tab">Mes projets</a></li>
-							<li role="presentation"><a href="#Autre_projects" aria-controls="Autre_projects" role="tab" data-toggle="tab">Autre projects</a></li>
-							<li role="presentation"><a href="#Projets_en_cours" aria-controls="Projets_en_cours" role="tab" data-toggle="tab">Projets en cours</a></li>
-							<li role="presentation"><a href="#Projets_terminées" aria-controls="Projets_terminées" role="tab" data-toggle="tab">Projets terminées</a></li>
-							<li role="presentation"><a href="#Projets_supprimées" aria-controls="Projets_supprimées" role="tab" data-toggle="tab">Projets supprimées</a></li>
-						</ul>
+                            <li role="presentation" class="active">
+                                <a href="#home1" aria-controls="home1" role="tab" data-toggle="tab">Your projects</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Athers projects</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#encour" aria-controls="home1" role="tab" data-toggle="tab">Projets en cours</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#terminee" aria-controls="profile" role="tab" data-toggle="tab">Projets terminées</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#supprimer" aria-controls="profile" role="tab" data-toggle="tab">Projets supprimées</a>
+                            </li>
+                        </ul>
 
-						<div class="tab-content">
-							<div role="tabpanel"  class="tab-pane active" id="Mes_projets">
-								<ul class="list-group">
-										{{#each ListProjectUser}}
-												<li class="list-group-item linkProject" >    <h3> {{Name}}</h3> <br>  <p>{{Description}}  </p>    </li>
-										{{/each}}
-								 </ul>
-						  </div>
-							<div role="tabpanel" class="tab-pane" id="Autre_projects</">
-								<ul class="list-group">
-										{{#each ListProjectcollaborator}}
-												  <li class="list-group-item linkProject" >     <h3> {{Name}} </h3><br>   <p>{{Description}}</p>    </li>
-										{{/each}}
-								 </ul>
-						   </div>
-						   <div role="tabpanel" class="tab-pane" id="Projets_en_cours</">
-								<ul class="list-group">
-										{{#each ListProjectcollaborator}}
-												  <li class="list-group-item linkProject" >     <h3> {{Name}} </h3><br>   <p>{{Description}}</p>    </li>
-										{{/each}}
-								 </ul>
-						   </div>
-						   <div role="tabpanel" class="tab-pane" id="Projets_terminées</">
-								<ul class="list-group">
-										{{#each ListProjectcollaborator}}
-												  <li class="list-group-item linkProject" >     <h3> {{Name}} </h3><br>   <p>{{Description}}</p>    </li>
-										{{/each}}
-								 </ul>
-						   </div>
-						   <div role="tabpanel" class="tab-pane" id="Projets_supprimées</">
-								<ul class="list-group">
-										{{#each ListProjectcollaborator}}
-												  <li class="list-group-item linkProject" >     <h3> {{Name}} </h3><br>   <p>{{Description}}</p>    </li>
-										{{/each}}
-								 </ul>
-						   </div>
-						</div>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="home1">
+                                <ul class="list-group">
+                                    {{#each ListProjectUser}}
+                                    <li class="list-group-item linkProject">
+                                        <h3> {{Name}}</h3>
+                                        <br>
+                                        <p>{{Description}} </p>
 
-					</div>
+                                        
+                                        <p>{{state}}</p>
+                                        
+
+                                    </li>
+                                    {{#if NoDeleted}}
+                                    <i class="fa fa-trash" aria-hidden="true" id="delete"></i>
+                                    {{/if}}
+                                    {{/each}}
+                                </ul>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="profile">
+                                <ul class="list-group">
+                                    {{#each ListProjectcollaborator}}
+                                    <li class="list-group-item linkProject">
+                                        <h3> {{Name}} </h3>
+                                        <br>
+                                        <p>{{Description}}</p>
+                                    </li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+
+
+
+                            <div role="tabpanel" class="tab-pane" id="encour">
+                                <ul class="list-group">
+                                    {{#each ListProjectencour}}
+                                    <li class="list-group-item linkProject">
+                                        <h3> {{Name}} </h3>
+                                        <br>
+                                        <p>{{Description}}</p>
+                                    </li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+
+
+
+                            <div role="tabpanel" class="tab-pane" id="terminee">
+                                <ul class="list-group">
+                                    {{#each ListProjectTerminee}}
+                                    <li class="list-group-item linkProject">
+                                        <h3> {{Name}} </h3>
+                                        <br>
+                                        <p>{{Description}}</p>
+                                    </li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="supprimer">
+                                <ul class="list-group">
+                                    {{#each ListProjectSupprimer}}
+                                    <li class="list-group-item linkProject">
+                                        <h3> {{Name}} </h3>
+                                        <br>
+                                        <p>{{Description}}</p>
+                                    </li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+          
 			</div>
 		</div>
 	</div>

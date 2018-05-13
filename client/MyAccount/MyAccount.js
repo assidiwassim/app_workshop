@@ -18,12 +18,18 @@ Template.MyAccount.onRendered(function() {
 Template.MyAccount.events({
     'click .linkProject': function() {
         FlowRouter.go('/WorkPage/' + this._id);
-    }
+    },
+    'click #delete':function(){
+       Meteor.call('deleteProject', this._id, function(error, success) {
+           if (error) {
+               console.log('error', error);
+           }
+           if (success) {
+               
+           }
+       });
+   }
 });
-
-
-
-
 
 Template.MyAccount.helpers({
      'ListProjectUser': function() {
@@ -73,5 +79,82 @@ Template.MyAccount.helpers({
         else
             return false;
     },
+    'NoDeleted'(){
+        const statee=Projects.find({_id:this._id}).fetch();
+        console.log(statee[0].Status)
+        return statee[0].Status !=="Annuler";
+        },
+   'ListProjectTerminee': function() {
+       
+       return Projects.find({
+           "$or": [
+            {  
+                 "$and": [
+                   { 'Manager': Meteor.userId()},
+                   { 'Status': 'Terminée'}
+               ]
+           },
+               {
+                   "$and": [
+                       { 'Collaborators': { $elemMatch: { $eq: Meteor.user().username } } },
+                       { 'Status': 'Terminée'}
+                   ]
+               }
+           ] 
+       }).fetch();
+       
+   },
+
+
+
+   'ListProjectencour': function() {
+       
+       return Projects.find({
+           "$or": [
+            {  
+                 "$and": [
+                   { 'Manager': Meteor.userId()},
+                   { 'Status': 'En cours'}
+               ]
+           },
+               {
+                   "$and": [
+                       { 'Collaborators': { $elemMatch: { $eq: Meteor.user().username } } },
+                       { 'Status': 'En cours'}
+                   ]
+               }
+           ]
+
+           
+       
+       
+       }).fetch();
+       
+   },
+
+   'ListProjectSupprimer': function() {
+       
+       return Projects.find({
+           "$or": [
+            {  
+                 "$and": [
+                   { 'Manager': Meteor.userId()},
+                   { 'Status': 'Annuler'}
+               ]
+           },
+               {
+                   "$and": [
+                       { 'Collaborators': { $elemMatch: { $eq: Meteor.user().username } } },
+                       { 'Status': 'Annuler'}
+                   ]
+               }
+           ]
+
+           
+       
+       
+       }).fetch();
+       
+   },
 
 });

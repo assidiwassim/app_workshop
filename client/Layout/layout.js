@@ -41,6 +41,34 @@ Template.SLayout.helpers({
  },
     'GetUsername': function() {
        return Meteor.user().username;
+    },
+   'ListMessagesNonVue': () => {
+        var nbrMsgNonVue = Messages.find({
+            $and: [{
+                    "to": Meteor.userId()
+                },
+                {
+                    "Vue": false
+                }
+            ]
+        }).count();
+        return nbrMsgNonVue;
+    },
+    'ExisteMessagesNonVue': () => {
+
+        var nbrMsgNonVue = Messages.find({
+            $and: [{
+                    "to": Meteor.userId()
+                },
+                {
+                    "Vue": false
+                }
+            ]
+        }).count();
+        if (nbrMsgNonVue > 0)
+            return true;
+        else
+            return false;
     }
 });
 
@@ -54,3 +82,6 @@ Template.SLayout.events({
             FlowRouter.go("/StepOne") ;
         },
 });
+
+
+
