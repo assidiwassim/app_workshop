@@ -7,14 +7,17 @@ Meteor.startup(() => {
     })
 
     Meteor.methods({
-        AddProject: function(Name, Description, Manager, Collaborators) {
+        AddProject: function(Name, Description, Manager, Collaborators,datedeb,dateFin) {
             try {
                 var result = Projects.insert({
                     Name: Name,
                     Description: Description,
                     Manager: Manager,
                     Collaborators: Collaborators,
-                    Status:"En cours"
+                    Status:"En cours",
+                    datedeb,
+                    dateFin,
+                    Notification:""
                 });
                 if (result) {
                     return result;
@@ -22,7 +25,26 @@ Meteor.startup(() => {
             } catch (err) {
                 return err;
             }
-        }
+        },
+        'Update.Projet.jour'(id){
+            Projects.update({_id: id}, {$set:{
+                Notification:"Reste 1 jour "
+            }});
+            
+        },
+        'Update.Projet.fin'(id){
+            Projects.update({_id: id}, {$set:{
+                Notification:"fin de projet"
+            }});
+            
+        },
+        'Update.Projet.depasser'(id){
+            Projects.update({_id: id}, {$set:{
+                Notification:""
+            }});
+            
+        },
+        
     });
 
 });

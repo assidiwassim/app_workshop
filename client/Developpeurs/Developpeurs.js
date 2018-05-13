@@ -127,7 +127,9 @@ Template.Developpeurs.events({
         const msg =$('#msg').val();
         const to =this._id;
         const from =Meteor.userId();
+        console.log(msg)
         if(msg!="")
+        {
         Meteor.call('SendsMessage',from,to,msg,(err,res)=>{
             if(err){
                 console.log(err)
@@ -139,5 +141,9 @@ Template.Developpeurs.events({
         })
 
 
+    }else{
+    console.log('kf,sdqkljfks')
     }
+}
+
 })

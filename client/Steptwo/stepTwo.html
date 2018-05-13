@@ -57,11 +57,11 @@
 
 
                                                                                                         <form>
-                                                                                                                {{#each AllUsers}}
+                                                                                                                {{#each value in AllUsers}}
                                                                                                                 <div class="checkbox" id="checkboxes">
 
                                                                                                                         <label>
-                                                                                                                                <input type="checkbox" class="checkbox2" value="{{_id}}" name="{{_id}}"> {{username}}
+                                                                                                                                <input type="checkbox" class="checkbox2" value="{{value}}" name="{{value}}"> {{value}}
 
                                                                                                                         </label>
                                                                                                                 </div>

@@ -3,6 +3,7 @@
 
         SendsMessage: function(from, to, msg) {
             try {
+                console.log("cdswcscqscsq")
                 var result = Messages.insert({
                     from,to,msg,date:new Date(),Vue:false
                 });

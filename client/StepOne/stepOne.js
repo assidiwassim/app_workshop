@@ -13,13 +13,14 @@ Template.StepOne.events({
         const target = event.target;
         const Name = target.Name.value;
         const Description = target.Description.value;
-
+        const datedeb = target.datedeb.value;
+        const dateFin = target.dateFin.value;
 
         if (Name == "" || Description == "") {
             Bert.alert("Champ obligatoire", 'danger', 'growl-bottom-right');
         } else {
 
-            Meteor.call('AddProject', Name, Description, Meteor.userId(), List, function(error, res) {
+            Meteor.call('AddProject', Name, Description, Meteor.userId(), List,datedeb,dateFin, function(error, res) {
                 if (error) {
                     Bert.alert(error.reason, 'danger', 'growl-bottom-right');
                 } else {

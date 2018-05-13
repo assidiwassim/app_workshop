@@ -16,10 +16,11 @@
 
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-fw fa-bell-o"></i> Nouveauté <span class="badge">0</span></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-fw fa-bell-o"></i> Nouveauté{{ListProject}} <span class="badge">{{NbrNotification}}</span></a>
 					<ul class="dropdown-menu" role="menu">
-					    <li><a href="#"> <span class="badge">Music</span> sayfasında iletiniz beğenildi</a></li>
-						<li><a href="#"> <span class="badge">Video</span> sayfasında iletiniz beğenildi</a></li>
+						{{#each NotificationList}}
+					    <li><a href="#"> <span class="badge">{{Name}}</span>{{Notification}}</a></li>
+					{{/each}}
 					</ul>
 				</li>
 				<li class="active"><a href="/Developpeurs">Chercher des developpeurs </a></li>

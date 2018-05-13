@@ -133,7 +133,10 @@ Template.StepTwo.events({
 
 Template.StepTwo.helpers({
     'AllUsers': function() {
-        return Meteor.users.find({_id:{$ne:Meteor.userId()}}).fetch();
+        var IdProject = FlowRouter.getParam("postId");
+      const collaboratos=  Projects.find({_id:IdProject}).fetch()
+      return collaboratos[0].Collaborators;
+       // return Meteor.users.find({_id:{$ne:Meteor.userId()}}).fetch();
     },
 
     'FindList': function() {
