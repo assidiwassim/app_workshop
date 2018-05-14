@@ -32,11 +32,6 @@ Template.SignUp.events({
                         if (err) {
                             Bert.alert(err.reason, 'danger', 'growl-bottom-right');
                         } else {
-                            Bert.alert({
-                                icon: 'fa-user-o',
-                                title: 'hello ' + Username,
-                                message: 'Welcome in workShop.com'
-                            });
                             FlowRouter.go('/MyAccount');
                         }
 
