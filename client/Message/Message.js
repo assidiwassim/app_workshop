@@ -6,6 +6,8 @@ import { Session } from 'meteor/session'
 import Images from '/lib/Images';
 
 Template.Message.onRendered(function infoOnCreated() {
+    Meteor.subscribe('Chat');
+    Meteor.subscribe('users');
     Session.clear();
     Session.setPersistent('nameClient', "");
 });
@@ -29,9 +31,13 @@ Template.Message.helpers({
             return true;
     },
     'ListMessages': () => {
-	console.log(Session.get('nameClient'))
-	const id=Meteor.users.find({username:Session.get('nameClient')}).fetch()[0]._id;
-	
+    
+    let id="";
+    if(Session.get('nameClient')!=""){
+        if(Meteor.users.find({username:Session.get('nameClient')}).count()>0){
+     let obj =Meteor.users.find({username:Session.get('nameClient')}).fetch();
+     id=obj[0]._id}
+    }
         $('.direct-Messages-messages').animate({ scrollTop: $('.direct-Messages-messages').prop('scrollHeight') }, 5);
          return Messages.find({
          
@@ -49,10 +55,6 @@ Template.Message.helpers({
                 ]
             }
         ]
-
-
-
-
         }).fetch();
     },
     'me': (id) => {
@@ -99,13 +101,12 @@ Template.Message.helpers({
       const name=  Meteor.users.find({_id:id}).fetch();
         return name[0].username;
     },
-       'ImageProfileUtilisateurChat': function(id) {
-       
-        
+    'ImageProfileUtilisateurChat': function(id) {
+               
         return Images.find({ 'meta.uid':id  }, { sort: { 'meta.CreatedAt': -1 }, limit: 1 });
     },
      'ExisteImageProfileUtilisateurChat': function(id) {
-        console.log(id)
+
         if(Images.find({ 'meta.uid': id }, { sort: { 'meta.CreatedAt': -1 }, limit: 1 }).count()>0)
             return true;
         else
@@ -117,10 +118,15 @@ Template.Message.helpers({
 
 Template.Message.events({
     'click .item': function(e, template) {
-        console.log(this);
         Session.setPersistent('nameClient', e.currentTarget.innerText);
-        const id=Meteor.users.find({username:Session.get('nameClient')}).fetch()[0]._id;
        
+        let id="";
+        if(Session.get('nameClient')!=""){
+            if(Meteor.users.find({username:Session.get('nameClient')}).count()>0){
+         let obj =Meteor.users.find({username:Session.get('nameClient')}).fetch();
+         id=obj[0]._id}
+        }
+     
         Meteor.call('SupprimerVueMessage', id, function(error, res) {
             if (error) {
                 console.log(error.reason, 'danger', 'growl-bottom-right');
@@ -134,7 +140,12 @@ Template.Message.events({
         const message = target.message.value;
         if (message != "") {
           
- 			const id=Meteor.users.find({username:Session.get('nameClient')}).fetch()[0]._id;
+            let id="";
+            if(Session.get('nameClient')!=""){
+                if(Meteor.users.find({username:Session.get('nameClient')}).count()>0){
+             let obj =Meteor.users.find({username:Session.get('nameClient')}).fetch();
+             id=obj[0]._id}
+            }
             Meteor.call('SendsMessage', Meteor.userId(), id, message, function(error, res) {
                 if (error) {
                     console.log(error.reason, 'danger', 'growl-bottom-right');

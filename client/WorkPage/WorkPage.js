@@ -27,11 +27,11 @@ Template.WorkPage.events({
           Meteor.call('todos.updateText',y[0].path
             , (err, res) => {
               if (err) {
-               alert(err);
+             //  alert(err);
           
               } else {
               
-            console.log(res)
+         
             $('#summernote').summernote('code',res);
                 
               }
@@ -42,25 +42,22 @@ Template.WorkPage.events({
         
         var IdProject = FlowRouter.getParam("postId");
         const userList=file.meta.users;
-        console.log(file.meta)
-        console.log(Meteor.user().username);
         const manager= Projects.find({_id:IdProject}).fetch();
-        console.log(IdProject,manager[0].Manager)
         if(Meteor.userId()==manager[0].Manager)
         {
             
         Meteor.call('remove', file._id,file.name, function(error, success) { 
             if (error) { 
-                console.log('error', error); 
+               // console.log('error', error); 
             } 
             else{
                 const content=$('#summernote').summernote('code');
                 Meteor.call('insertDoc2', file.name,content,file.meta, function(error, success) { 
                     if (error) { 
-                        console.log('error', error); 
+                       // console.log('error', error); 
                     } 
                     else { 
-                         console.log('ok')
+                        // console.log('ok')
                     } 
                 });
             }
@@ -71,16 +68,16 @@ Template.WorkPage.events({
             {
                 Meteor.call('remove', file._id,file.name, function(error, success) { 
                     if (error) { 
-                        console.log('error', error); 
+                       // console.log('error', error); 
                     } 
                     else{
                         const content=$('#summernote').summernote('code');
                         Meteor.call('insertDoc2', file.name,content,file.meta, function(error, success) { 
                             if (error) { 
-                                console.log('error', error); 
+                                //console.log('error', error); 
                             } 
                             else { 
-                                 console.log('ok')
+                               //  console.log('ok')
                             } 
                         });
                     }
@@ -181,10 +178,6 @@ Template.WorkPage.helpers({
     done:function(id){
         const f= Files.find({'_id':id}).fetch();
         return (f[0].meta.state==100)
-    },
-
-   
-  
-    
+    }
   
   });

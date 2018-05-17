@@ -1,11 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 
 Meteor.startup(() => {
-
-    Meteor.publish('AllUsers', function() {
-        return Meteor.users.find();
-    })
-
+    
     Meteor.methods({
         AddProject: function(Name, Description, Manager, Collaborators,datedeb,dateFin) {
             try {

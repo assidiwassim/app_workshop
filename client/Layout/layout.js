@@ -95,29 +95,45 @@ Template.SLayout.helpers({
               }).count();
 },
 
-'NotificationList'(){
-    return Projects.find({
+    'NotificationList'(){
+         return Projects.find({
          
-        "$or": [
-                   {
-                      "$and": [
-                         {'Manager': Meteor.userId()},
-                          {'Notification':{$ne:""}} /* or { "isDeleted": { "$exists": false } } */
-                      ]
-                  },
-                  {
-                      "$and": [
-                          {'Collaborators': { $elemMatch: { $eq: Meteor.user().username } } },
-                          {'Notification':{$ne:""}} /* or { "isDeleted": { "$exists": false } } */
-                      ]
-                  }
-              ]
-      
-      
-      
-      
+                "$or": [
+                        {
+                            "$and": [
+                                {'Manager': Meteor.userId()},
+                                {'Notification':{$ne:""}} /* or { "isDeleted": { "$exists": false } } */
+                            ]
+                        },
+                        {
+                            "$and": [
+                                {'Collaborators': { $elemMatch: { $eq: Meteor.user().username } } },
+                                {'Notification':{$ne:""}} /* or { "isDeleted": { "$exists": false } } */
+                            ]
+                        }
+                    ]
               });
-},
+    },
+
+    'ExisteNotificationList'(){
+        return Projects.find({
+        
+               "$or": [
+                       {
+                           "$and": [
+                               {'Manager': Meteor.userId()},
+                               {'Notification':{$ne:""}} /* or { "isDeleted": { "$exists": false } } */
+                           ]
+                       },
+                       {
+                           "$and": [
+                               {'Collaborators': { $elemMatch: { $eq: Meteor.user().username } } },
+                               {'Notification':{$ne:""}} /* or { "isDeleted": { "$exists": false } } */
+                           ]
+                       }
+                   ]
+             }).count()>0;
+   },
 
 
 

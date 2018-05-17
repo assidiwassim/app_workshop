@@ -9,10 +9,10 @@ Meteor.methods({
        return content;
    },
    'remove':function(id,name){
-     fs.exists('../../../../../.meteor/files/'+name, function(exists) {
+     fs.exists('/home/upload/'+name, function(exists) {
        if(exists) {
          console.log('File exists. Deleting now ...');
-         fs.unlink('../../../../../.meteor/files/'+name,()=>{
+         fs.unlink('/home/upload/'+name,()=>{
          });
        } else {
          console.log('File not found, so not deleting.');
@@ -59,7 +59,7 @@ if(fileList==filefinishedList)
 
    "insertDoc": function(fname,fcontent,users,id) {
    
-     fs.writeFile("../../../../../.meteor/files/"+id+' '+fname, fcontent, function(err) {
+     fs.writeFile("/home/upload/"+id+' '+fname, fcontent, function(err) {
        if(err) {
            return console.log(err);
        }
@@ -68,7 +68,7 @@ if(fileList==filefinishedList)
    });
  Meteor.sleep(500);
    
-             var uploadInstance = Files.addFile("../../../../../.meteor/files/"+id+' '+fname,{
+             var uploadInstance = Files.addFile("/home/upload/"+id+' '+fname,{
                
                fileName: id+' '+fname,
                meta:{
@@ -89,7 +89,7 @@ if(fileList==filefinishedList)
 
          "insertDoc2": function(fname,fcontent,meta) {
           Meteor.sleep(500);
-           fs.writeFile("../../../../../.meteor/files/"+fname, fcontent, function(err) {
+           fs.writeFile("/home/upload/"+fname, fcontent, function(err) {
              if(err) {
                  return console.log(err);
              }
@@ -97,7 +97,7 @@ if(fileList==filefinishedList)
              console.log("The file was saved!");
          });
        
-                   var uploadInstance = Files.addFile("../../../../../.meteor/files/"+fname,{
+                   var uploadInstance = Files.addFile("/home/upload/"+fname,{
                      
                      fileName:fname,
                      meta:meta

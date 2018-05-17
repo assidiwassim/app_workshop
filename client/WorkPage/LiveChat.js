@@ -26,7 +26,7 @@ Template.LiveChat.events({
         var IdProject = FlowRouter.getParam("postId");
         Meteor.call('InsertMessageChat', Meteor.user().username, message, IdProject, function(error) {
             if (error) {
-                console.log(error.reason);
+               // console.log(error.reason);
             } else {
                 var objDiv = $('.chat-history')
                 objDiv[0].scrollTop = objDiv[0].scrollHeight;
@@ -74,7 +74,7 @@ Template.LivechatMobile.events({
         var IdProject = FlowRouter.getParam("postId");
         Meteor.call('InsertMessageChat', Meteor.user().username, message, IdProject, function(error) {
             if (error) {
-                console.log(error.reason);
+                //console.log(error.reason);
             } else {
                 var objDiv = $('.chat-history')
                 objDiv[0].scrollTop = objDiv[0].scrollHeight;

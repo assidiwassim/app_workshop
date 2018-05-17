@@ -17,19 +17,19 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-fw fa-bell-o"></i> Nouveauté{{ListProject}} <span class="badge">{{NbrNotification}}</span></a>
+					{{#if ExisteNotificationList}}
 					<ul class="dropdown-menu" role="menu">
 						{{#each NotificationList}}
 					    <li><a href="#"> <span class="badge">{{Name}}</span>{{Notification}}</a></li>
-					{{/each}}
+						{{/each}}
 					</ul>
+					{{/if}}
 				</li>
 				<li class="active"><a href="/Developpeurs">Chercher des developpeurs </a></li>
 				<li class="active"><a href="/MyAccount">Mes projets </a></li>
 				<li class="active"><a href="/profile">Mon profile </a></li>
 				<li class="active"><a href="/Message">Messages 		
-					{{#if ExisteMessagesNonVue }}
 						<span class="badge">{{ListMessagesNonVue}}</span>
-						{{/if}}
 					 </a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{GetUsername}} <span class="caret"></span></a>
