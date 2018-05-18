@@ -8,6 +8,7 @@ Template.Developpeurs.onRendered(function() {
     Meteor.subscribe('users');
     Meteor.subscribe('Projects');
     Meteor.subscribe('Chat');
+    Meteor.subscribe('Messages');
 });
 
 
@@ -61,7 +62,6 @@ Template.Developpeurs.helpers({
             return false;
     },
       'ImageProfileUtilisateur': function() {
-      	console.log(this._id);
         return Images.find({ 'meta.uid':this._id  }, { sort: { 'meta.CreatedAt': -1 }, limit: 1 });
     },
      'ExisteImageProfileUtilisateur': function() {
@@ -72,12 +72,9 @@ Template.Developpeurs.helpers({
     },
 
      'ImageProfileUtilisateurChat': function(id) {
-        console.log(id)
-        
         return Images.find({ 'meta.uid':id  }, { sort: { 'meta.CreatedAt': -1 }, limit: 1 });
     },
      'ExisteImageProfileUtilisateurChat': function(id) {
-        console.log(id)
         if(Images.find({ 'meta.uid': id }, { sort: { 'meta.CreatedAt': -1 }, limit: 1 }).count()>0)
             return true;
         else
@@ -121,13 +118,11 @@ Template.Developpeurs.helpers({
 
 
 Template.Developpeurs.events({
-
     'click .send'(){
-
-        const msg =$('#msg').val();
+        const msg =$('#msg-'+this._id).val();
         const to =this._id;
+
         const from =Meteor.userId();
-        console.log(msg)
         if(msg!="")
         {
         Meteor.call('SendsMessage',from,to,msg,(err,res)=>{
@@ -135,14 +130,9 @@ Template.Developpeurs.events({
                 console.log(err)
             }
             else{
-              
                 $('#msg').val("")
             }
         })
-
-
-    }else{
-    console.log('kf,sdqkljfks')
     }
 }
 
