@@ -84,7 +84,7 @@ Template.WorkPage.events({
                 });
             }
             else{
-                console.log('error');
+                //console.log('error');
             }
         }
 
@@ -97,6 +97,9 @@ Template.WorkPage.events({
         
 
     },
+
+
+    
     'click #UploadButton'(){
         var IdProject = FlowRouter.getParam("postId");
         FlowRouter.go('/StepTwo/'+IdProject);

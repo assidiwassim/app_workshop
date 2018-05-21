@@ -1,7 +1,8 @@
 import { Template } from 'meteor/templating';
 
 
-List = [];
+
+
 
 someTest = false;
 Template.StepOne.events({
@@ -16,11 +17,11 @@ Template.StepOne.events({
         const datedeb = target.datedeb.value;
         const dateFin = target.dateFin.value;
 
-        if (Name == "" || Description == "") {
+        if (Name == "" || Description == "" || datedeb=="" || dateFin=="") {
             Bert.alert("Champ obligatoire", 'danger', 'growl-bottom-right');
         } else {
 
-            Meteor.call('AddProject', Name, Description, Meteor.userId(), List,datedeb,dateFin, function(error, res) {
+            Meteor.call('AddProject', Name, Description, Meteor.userId(), [],datedeb,dateFin, function(error, res) {
                 if (error) {
                     Bert.alert(error.reason, 'danger', 'growl-bottom-right');
                 } else {

@@ -23,7 +23,7 @@
 							            </div>
 							            <div class="box-footer no-padding">
 							              <ul class="nav nav-stacked">
-							                <li><a href="#">Projects <span class="pull-right badge bg-blue">{{NbrProjectUser}}</span></a></li>
+							                <li><a href="#">Projets <span class="pull-right badge bg-blue">{{NbrProjectUser}}</span></a></li>
 							                <li><a href="#">Collaborateurs en <span class="pull-right badge bg-aqua">{{NbrProjectcollaborator}}</span></a></li>
 							                <li><a href="#">Projets en cours <span class="pull-right badge bg-blue">{{NbrProjectUserEnCours}}</span></a></li>
 							                <li><a href="#">Projets terminées <span class="pull-right badge bg-green">{{NbrProjectUserTerminée}}</span></a></li>
@@ -47,10 +47,10 @@
                     <div class="card">
                         <ul class="nav nav-tabs" role="tablist">
                             <li role="presentation" class="active">
-                                <a href="#home1" aria-controls="home1" role="tab" data-toggle="tab">Your projects</a>
+                                <a href="#home1" aria-controls="home1" role="tab" data-toggle="tab">Vos  projets</a>
                             </li>
                             <li role="presentation">
-                                <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Athers projects</a>
+                                <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Autre projets</a>
                             </li>
                             <li role="presentation">
                                 <a href="#encour" aria-controls="home1" role="tab" data-toggle="tab">Projets en cours</a>
@@ -69,18 +69,25 @@
                                 <ul class="list-group">
                                     {{#each ListProjectUser}}
                                     <li class="list-group-item linkProject">
+                                            <p class="pull-right"> <i class="fa fa-clock-o"></i> <time> Date de fin de projet : {{dateFin}}</time></p>
                                         <h3> {{Name}}</h3>
+            
                                         <br>
                                         <p>{{Description}} </p>
 
                                         
                                         <p>{{state}}</p>
-                                        
+                                        <span> </span>
+                                       
+                                        <div class="progress">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                                                aria-valuemin="0" aria-valuemax="100" style="width:{{GetProgress}}%">
+                                                {{GetProgress}}% terminé (Succès)
+                                                </div>
+                                              </div>
 
                                     </li>
-                                    {{#if NoDeleted}}
-                                    <i class="fa fa-trash" aria-hidden="true" id="delete"></i>
-                                    {{/if}}
+                                    <button class="btn btn-default btn-xs pull-right" style="position: relative;bottom:100px;right: 10px; z-index: 100;" id="delete">Annuler</button>
                                     {{/each}}
                                 </ul>
                             </div>
@@ -88,9 +95,11 @@
                                 <ul class="list-group">
                                     {{#each ListProjectcollaborator}}
                                     <li class="list-group-item linkProject">
+                                            <p class="pull-right"> <i class="fa fa-clock-o"></i> <time> Date de fin de projet: {{dateFin}}</time></p>
                                         <h3> {{Name}} </h3>
                                         <br>
                                         <p>{{Description}}</p>
+
                                     </li>
                                     {{/each}}
                                 </ul>
@@ -127,10 +136,11 @@
                             <div role="tabpanel" class="tab-pane" id="supprimer">
                                 <ul class="list-group">
                                     {{#each ListProjectSupprimer}}
-                                    <li class="list-group-item linkProject">
+                                    <li class="list-group-item ">
                                         <h3> {{Name}} </h3>
                                         <br>
                                         <p>{{Description}}</p>
+                                        <button class="btn btn-primary restorer" style="position: absolute;right: 10px;bottom: 20px;">Restaurer</button>
                                     </li>
                                     {{/each}}
                                 </ul>

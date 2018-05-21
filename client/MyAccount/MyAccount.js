@@ -22,18 +22,30 @@ Template.MyAccount.events({
     'click #delete':function(){
        Meteor.call('deleteProject', this._id, function(error, success) {
            if (error) {
-               console.log('error', error);
+           
            }
            if (success) {
                
            }
        });
+   },
+   'click .restorer'(e){
+        e.preventDefault();
+       
+        Meteor.call('Projet.restorer', this._id, function(error, success) { 
+            if (error) { 
+               
+            } 
+            if (success) { 
+                 
+            } 
+        });
    }
 });
 
 Template.MyAccount.helpers({
      'ListProjectUser': function() {
-        return Projects.find({ 'Manager': Meteor.userId() }).fetch();
+        return Projects.find({ '$and': [{ 'Manager': Meteor.userId() }, {'Status': {'$ne': 'Annuler'} }] }).fetch();
     },
     'ListProjectcollaborator': function() {
         return Projects.find({ 'Collaborators': { $elemMatch: { $eq: Meteor.user().username } } }).fetch();
@@ -79,9 +91,35 @@ Template.MyAccount.helpers({
         else
             return false;
     },
+    'GetProgress'(){
+           
+            let sum=0;
+            const FilesKList =Files.find({'meta.id':this._id}).fetch();
+            
+            FilesKList.map((item,index)=>{
+             
+                sum+=item.meta.state;
+            })
+            if(sum/FilesKList.length===100)
+            {
+                Meteor.call('Projet.terminer', this._id, function(error, success) { 
+                    if (error) { 
+                      
+                    } 
+                    if (success) { 
+                         
+                    } 
+                });
+            }
+            return sum/FilesKList.length;
+    },
+
+
+
+
     'NoDeleted'(){
         const statee=Projects.find({_id:this._id}).fetch();
-        console.log(statee[0].Status)
+ 
         return statee[0].Status !=="Annuler";
         },
    'ListProjectTerminee': function() {
@@ -110,20 +148,13 @@ Template.MyAccount.helpers({
    'ListProjectencour': function() {
        
        return Projects.find({
-           "$or": [
-            {  
+           
                  "$and": [
                    { 'Manager': Meteor.userId()},
                    { 'Status': 'En cours'}
                ]
-           },
-               {
-                   "$and": [
-                       { 'Collaborators': { $elemMatch: { $eq: Meteor.user().username } } },
-                       { 'Status': 'En cours'}
-                   ]
-               }
-           ]
+          
+           
 
            
        

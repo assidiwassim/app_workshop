@@ -1,11 +1,12 @@
 import { Template } from 'meteor/templating';
 
 import Files from '/lib/Files';
-
+List = [];
 
 Template.StepTwo.onCreated(function () {
     this.fileList =  new ReactiveList();
     this.counter =  new ReactiveVar(0);
+    Meteor.subscribe('AllUsers');
   });
 
 
@@ -18,7 +19,7 @@ Template.StepTwo.events({
 
         // Get value from form element
 
-
+        const fileinput=($)
         var IdProject = FlowRouter.getParam("postId");
 
         template.fileList.forEach((value, key) =>{
@@ -33,10 +34,7 @@ Template.StepTwo.events({
                         users:users,
                         id:IdProject,
                         state:0
-
                     }
-                  
-                   
                   }, false);
                 
                   uploadInstance.on('start', function() {
@@ -45,9 +43,9 @@ Template.StepTwo.events({
           
                   uploadInstance.on('end', function(error, fileObj) {
                     if (error) {
-                      window.alert('Error during upload: ' + error.reason);
+                     // window.alert('Error during upload: ' + error.reason);
                     } else {
-                      window.alert('File "' + fileObj.ext + '" successfully uploaded');
+                      //window.alert('File "' + fileObj.ext + '" successfully uploaded');
                     
                      
                     }
@@ -60,44 +58,43 @@ Template.StepTwo.events({
                 Meteor.call('insertDoc',value.name,'hi this an empty file',users,IdProject
                 , (err, res) => {
                   if (err) {
-                   alert(err);
+                  // alert(err);
               
                   } else {
                   
-                    alert(res)
+                  //  alert(res)
                   }
                 });
             }
           }, true); 
 
-
-
-
-
+          Meteor.call('Update.Project.List',IdProject, List, function(error, res) {
+            if (error) {
+                Bert.alert(error.reason, 'danger', 'growl-bottom-right');
+            } else {
+               
+            }
+        });
         FlowRouter.go('/WorkPage/' + IdProject);
-
     },
 
     'click #newfile'(e,template){
+        if($("#filename").val()!==""){
        const filename= $('#filename').val();
        const counter=template.counter.get()
        template.counter.set(counter+1)
        template.fileList.insert(counter,{name:filename,file:[],key:counter})
-       
-        
+       $('#filename').val("");
+    } 
     },
 
     'change #fileInput': function (e, template) {
         if (e.currentTarget.files && e.currentTarget.files[0]) {
-        
           var file = e.currentTarget.files[0];
           const filename=file.name;
           const counter=template.counter.get()
           template.counter.set(counter+1)
-          template.fileList.insert(counter,{name:filename,file:file,key:counter})
-          
-          
-
+          template.fileList.insert(counter,{name:filename,file:file,key:counter});
         }
     },
 
@@ -113,7 +110,7 @@ Template.StepTwo.events({
                 if(key===this.key){
                     name=value.name;
                     file=value.file;
-                    template.fileList.update(this.key, { name:name,file:file,userslist: selectedUsers})
+                    template.fileList.update(this.key, { name:name,file:file,userslist: selectedUsers,key:this.key})
                 }
               }, true); 
         // template.fileList.update(this.key, { userslist: selectedUsers});
@@ -122,9 +119,35 @@ Template.StepTwo.events({
 
     },
     'click .fa-times'(e,template){
+     
+        var id=e.currentTarget.dataset.value;
+        template.fileList.remove(id);
         
-        template.fileList.remove(this.key);
-        
+    },
+    'change .list-group-item input' (event) {
+        // Prevent default browser form submit
+
+
+        event.preventDefault();
+
+        var IdProject = FlowRouter.getParam("postId");
+        var index = List.indexOf(this.username);
+
+        if (index > -1) {
+            List.splice(index, 1);
+        } else {
+            List.push(this.username);
+        }
+        // Get value from form element
+
+     Meteor.call('Update.Project.List',IdProject, List, function(error, res) {
+            if (error) {
+                Bert.alert(error.reason, 'danger', 'growl-bottom-right');
+            } else {
+               
+            }
+        });
+
     }
 
 });
@@ -141,6 +164,18 @@ Template.StepTwo.helpers({
 
     'FindList': function() {
         return Template.instance().fileList.fetch();
-    }
+    },
+    'AllUserss': function() {
+        return Meteor.users.find().fetch();
+    },
+
+  
+
+    'isNotMyUsername': function() {
+        if (this.username != Meteor.user().username)
+            return true;
+        else
+            return false;
+    },
 
 });

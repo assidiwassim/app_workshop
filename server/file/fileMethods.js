@@ -55,6 +55,25 @@ if(fileList==filefinishedList)
    Status:'Annuler'
  }});
 },
+'Projet.restorer'(id){
+  Projects.update({_id: id}, {$set:{
+    Status:"En cours"
+  }});
+  
+},
+'Projet.terminer'(id){
+  Projects.update({_id: id}, {$set:{
+    Status:"Terminée"
+  }});
+  
+},
+'Update.Project.List'(id,list){
+  Projects.update({_id: id}, {$set:{
+    Collaborators:list
+}});
+
+
+},
 
 
    "insertDoc": function(fname,fcontent,users,id) {

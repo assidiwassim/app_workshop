@@ -19,17 +19,10 @@
                         </span>
                         <div class="scroll_liste ">
                                 {{#each file in FilesList.each}}
-                                {{#if done file._id}}
-                        <a data-value="{{file._id}}" class="list-group-item disabled"  >
-                             {{subname file.name }}  <i class="fa fa-download pull-right"> </i>{{file.meta.state}} %               
-                         </a>
-                        
-                          {{else}}
-
-
+    
                          
                           <a data-value="{{file._id}}" class="list-group-item" >
-                                {{subname file.name }}  <i class="fa fa-download pull-right"> </i>{{file.meta.state}} %               
+                                {{subname file.name }} <a href="{{file.link}}" download="true"> <i class="fa fa-download pull-right"> </i> </a>{{file.meta.state}} %               
                              </a>
 
                           
@@ -57,7 +50,7 @@
                              <input type="submit" data-value="{{file._id}}" value="changeValue" id="changeValue" class="btn btn-primary">
                              {{/if}}
 
-                          {{/if}}
+                        
                         {{/each}}
                         </div>
                     </div>        
