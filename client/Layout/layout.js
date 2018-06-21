@@ -1,9 +1,6 @@
 import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor'
-import Files from '/lib/Files';
-import Images from '/lib/Images';
-import Pdf from '/lib/Pdf';
-import { Session } from 'meteor/session'
+
 var a = 0;
 Template.SLayout.onRendered(function() {
     Meteor.subscribe('users');
@@ -34,10 +31,7 @@ Template.SLayout.helpers({
         }
     },
     ready:function(){
-    
     return FlowRouter.subsReady("users")
-    
-  
  },
     'GetUsername': function() {
        return Meteor.user().username;
@@ -73,7 +67,6 @@ Template.SLayout.helpers({
 
 'NbrNotification'(){
     return Projects.find({
-         
         "$or": [
                    {
                       "$and": [
@@ -88,10 +81,6 @@ Template.SLayout.helpers({
                       ]
                   }
               ]
-      
-      
-      
-      
               }).count();
 },
 
@@ -146,17 +135,11 @@ Template.SLayout.helpers({
        
         const porjectList= Projects.find({
             "$or": [
-             {  
-                 
-                     'Manager': Meteor.userId()
-                 
-            
-            },
+                {  
+                        'Manager': Meteor.userId()
+                },
                 {
-                   
                          'Collaborators': { $elemMatch: { $eq: Meteor.user().username } } 
-                       
-                    
                 }
             ] 
         }).fetch();
@@ -214,13 +197,12 @@ Template.SLayout.helpers({
 
 Template.SLayout.events({
     'click #logout' () {
-         
         Meteor.logout();	
     },
 
     'click .step_one' () { 
             FlowRouter.go("/StepOne") ;
-        },
+    },
 });
 
 
